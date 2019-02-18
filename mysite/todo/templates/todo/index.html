@@ -1,0 +1,54 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+    <font color="White"><h1>Music Playlist</h1> </font>
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <form action="{% url 'todo:create' %}" method="post">
+        {% csrf_token %}
+        <!-- Todo Name -->
+        <div class="form-group">
+            <label for="todo" class="col-sm-3 control-label"><font color="White">Add the music you want.</font></label>
+            <div class="col-sm-6">
+                {{ form.body }}
+            </div>
+        </div>
+
+        <!-- Add Todo Button -->
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-6">
+                <button type="submit" class="btn btn-default">
+                    <i class="fa fa-plus"></i><font color="White"></font>Add Music
+                </button>
+            </div>
+        </div>
+
+    </form>
+    
+
+    <!-- Current Todos -->
+    <font color="White"><h2>Your playlist</h2></font>
+    <table class="table table-striped todo-table">
+        <thead>
+            <th><font color="White">List</th><th>&nbsp;</th></font>
+        </thead>
+
+        <tbody>
+            {% for post in posts %}
+                <tr>
+                    <!-- Todo Name -->
+                    <td>
+                            <font color="White"><div>{{ post.body }}</div></font>
+                    </td>
+                    <td>
+                        <form action="{% url 'todo:delete' post.id %}" method="post">
+                            {% csrf_token %}
+                            <button>Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %}

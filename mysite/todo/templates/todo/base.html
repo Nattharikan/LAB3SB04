@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Music Playlist</title>
+        <!-- CSS And JavaScript -->
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+        <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+        <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+        <link rel="stylesheet" href="{% static 'css/todo.css' %}">
+         <style>
+            body {
+                background-image: url("https://wallpaper.campus-star.com/app/uploads/2017/09/wallpaper-n-40.jpg")
+                
+            }
+         
+         
+         
+         
+         
+         </style>
+    </head>
+    <body>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
